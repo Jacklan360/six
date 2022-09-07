@@ -1,17 +1,11 @@
 <template>
-  <div>111</div>
+  <router-view/>
 </template>
 
 <script>
-import  {getData} from "./http/aip";
 
 export default {
   name: 'App',
-  setup() {
-    getData.then(res => {
-      console.log(res,'=')
-    })
-  }
 }
 </script>
 

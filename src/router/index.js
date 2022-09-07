@@ -5,14 +5,46 @@ const routes = [
   {
     path: '/home',
     name: 'home',
-    component: HomeView
+    component: HomeView,
+    meta: {
+      isShow: false
+    },
+    children: [
+      {
+        path: '/courseList',
+        name: 'CourseList',
+        meta: {
+          isShow: true,
+          title: '课程列表'
+        },
+        component: () => import(/* webpackChunkName: "about" */ '../views/courseList.vue')
+      },
+      {
+        path: '/teacherList',
+        name: 'TeacherList',
+        meta: {
+          isShow: true,
+          title: '讲师列表'
+        },
+        component: () => import(/* webpackChunkName: "about" */ '../views/teacherList.vue')
+      },
+      {
+        path: '/personal',
+        name: 'personal',
+        meta: {
+          isShow: true,
+          title: '个人中心'
+        },
+        component: () => import(/* webpackChunkName: "about" */ '../views/personalView.vue')
+      }
+    ]
   },
   {
     path: '/',
     name: 'login',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
+    meta: {
+      isShow: false
+    },
     component: () => import(/* webpackChunkName: "about" */ '../views/LoginView.vue')
   }
 ]
